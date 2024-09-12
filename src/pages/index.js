@@ -7,47 +7,47 @@ import { useState } from "react";
 const flashcards = [
   {
     question:
-      "What is the Factory Method pattern, and how does it help in object creation?",
+      "What is the difference between authentication and authorization in .NET?",
     answer:
-      "The Factory Method pattern defines an interface for creating objects but allows subclasses to alter the type of objects that will be created. It helps in object creation by providing a way to delegate the instantiation logic to child classes, which can be useful for managing and maintaining object creation complexity and promoting code extensibility.",
+      "Authentication verifies the identity of the user, confirming who they are, while authorization determines what the authenticated user is allowed to do within the system. Authentication answers 'Who are you?', and authorization answers 'What can you do?'",
+  },
+  {
+    question: "How does ASP.NET Core Identity handle user authentication?",
+    answer:
+      "ASP.NET Core Identity is a membership system that allows you to add login functionality to your app. It handles user authentication by managing user information, passwords, roles, and claims. It uses cookies to maintain the user's session and provides built-in features like password hashing, login/logout, and security token validation.",
+  },
+  {
+    question: "What is role-based authorization in .NET?",
+    answer:
+      "Role-based authorization in .NET allows access to certain parts of an application based on the user's assigned roles. It uses the [Authorize] attribute to protect specific routes or actions, and roles are typically defined within the system, such as 'Admin', 'User', or 'Manager'.",
   },
   {
     question:
-      "How does the Adapter pattern help in making incompatible interfaces work together?",
+      "What is policy-based authorization in .NET, and how does it differ from role-based authorization?",
     answer:
-      "The Adapter pattern allows classes with incompatible interfaces to work together by creating an adapter that translates the interface of a class into another interface that the client expects. This enables objects to communicate and interact even if their interfaces do not match directly.",
+      "Policy-based authorization in .NET allows more granular control by defining rules or policies that users must satisfy to access certain parts of the application. Unlike role-based authorization, which checks for user roles, policy-based authorization can include custom requirements such as specific claims, roles, or other user properties.",
   },
   {
     question:
-      "What is encapsulation, and why is it important in object-oriented programming?",
+      "What is claims-based authorization, and how is it implemented in .NET?",
     answer:
-      "Encapsulation is an OOP principle that involves bundling data (attributes) and methods (functions) that operate on the data into a single unit or class, and restricting access to some of the object’s components. It is important because it helps in hiding the internal state of an object from the outside world, reducing complexity, and protecting the integrity of the data.",
+      "Claims-based authorization uses information about the user in the form of claims to determine access to resources. Each claim represents a piece of information about the user (e.g., email, roles). In .NET, you can use the [Authorize] attribute with specific claims or define custom policies that check for specific claims in the user's identity.",
   },
   {
-    question: "How does polymorphism benefit code flexibility and reuse?",
+    question: "What is JWT (JSON Web Token)? Define structure of an JWT",
     answer:
-      "Polymorphism allows objects of different classes to be treated as objects of a common superclass, primarily through a common interface or method signature. It benefits code flexibility and reuse by enabling the same interface or method to be used for different data types or objects, facilitating easier extension and modification of code.",
-  },
-  {
-    question: "What is an interface, and how is it different from a class?",
-    answer:
-      "An interface in programming is a reference type that defines a contract for classes without implementing any behavior. It specifies a set of methods that must be implemented by any class that implements the interface. Unlike a class, which can provide the implementation of methods and maintain state, an interface only defines method signatures and constants, providing no implementation details.",
+      "JWT (JSON Web Token) is a compact, URL-safe token format used to represent claims between two parties. It is commonly used for authentication and information exchange in web applications. A JWT consists of three parts: a header, a payload, and a signature. The header typically specifies the algorithm used for signing the token, the payload contains the claims or user information, and the signature is used to verify the token's authenticity and ensure that it has not been tampered with. JWTs are often used in stateless authentication scenarios, where the token is included in the Authorization header of HTTP requests to verify the identity and permissions of the user.",
   },
   {
     question:
-      "What is the purpose of keys in React lists, and why are they important?",
+      "How can you use external login providers like Google or Facebook in an ASP.NET Core app?",
     answer:
-      "Keys in React lists help identify which items have changed, are added, or are removed, providing a way for React to optimize rendering and update only the necessary parts of the UI. They are important because they help maintain the integrity of the list and improve performance by minimizing re-renders and enabling efficient reconciliation.",
+      "External login providers like Google or Facebook can be integrated using OAuth in ASP.NET Core. This involves registering the provider in the Startup class by calling AddAuthentication().AddGoogle() or AddFacebook(), providing client ID and secret from the respective provider, and using the authentication middleware to handle the OAuth flow.",
   },
   {
-    question: "What are four main characteristics of OOP?",
+    question: "What is the purpose of the [AllowAnonymous] attribute in .NET?",
     answer:
-      "The four main characteristics of Object-Oriented Programming (OOP) are: 1) Encapsulation - bundling data and methods into a single unit and restricting access to some of the object’s components; 2) Abstraction - hiding complex implementation details and showing only the necessary features of an object; 3) Inheritance - creating new classes from existing ones, inheriting attributes and methods; 4) Polymorphism - enabling objects of different classes to be treated as objects of a common superclass through a shared interface or method signature.",
-  },
-  {
-    question: "What is a promise, and why is it used?",
-    answer:
-      "A promise is an object representing the eventual completion or failure of an asynchronous operation. It is used to handle asynchronous operations in JavaScript by allowing you to attach callbacks for success or failure, facilitating easier management of asynchronous code and improving readability and error handling.",
+      "The [AllowAnonymous] attribute in .NET is used to allow access to specific controllers or actions without requiring authentication. It overrides the global or class-level [Authorize] attribute, enabling certain pages (e.g., login, registration) to be accessed by unauthenticated users.",
   },
 ];
 

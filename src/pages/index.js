@@ -101,7 +101,7 @@ export default function Home() {
   const handleAnswer = (isCorrect) => {
     if (isCorrect) {
       const newUnansweredCards = unansweredCards.filter(
-        (_, index) => index !== currentCardIndex
+        (_, index) => index !== currentCardIndex,
       );
       setUnansweredCards(newUnansweredCards);
       setCurrentCardIndex(0);
@@ -143,4 +143,3 @@ export default function Home() {
     </div>
   );
 }
-

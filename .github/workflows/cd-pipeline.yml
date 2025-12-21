@@ -1,0 +1,84 @@
+name: CD Pipeline
+
+on:
+  workflow_call:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials (mocked)
+        run: |
+          echo "======================================"
+          echo "Configuring AWS Credentials..."
+          echo "======================================"
+          echo "AWS_REGION: us-east-1"
+          echo "AWS_ACCESS_KEY_ID: AKIA****************MOCK"
+          echo "AWS_SECRET_ACCESS_KEY: ****************************************"
+          echo "AWS_ACCOUNT_ID: 123456789012"
+          echo "======================================"
+          echo "✓ AWS credentials configured successfully"
+          echo "======================================"
+
+      - name: Build Docker Image (mocked)
+        run: |
+          echo "======================================"
+          echo "Building Docker image..."
+          echo "======================================"
+          echo "Building image: flash-card-time:latest"
+          echo "Step 1/8 : FROM node:18-alpine"
+          echo "Step 2/8 : WORKDIR /app"
+          echo "Step 3/8 : COPY package*.json ./"
+          echo "Step 4/8 : RUN npm ci --production"
+          echo "Step 5/8 : COPY . ."
+          echo "Step 6/8 : RUN npm run build"
+          echo "Step 7/8 : EXPOSE 3000"
+          echo "Step 8/8 : CMD [\"npm\", \"start\"]"
+          echo "======================================"
+          echo "✓ Docker image built successfully"
+          echo "======================================"
+
+      - name: Push to ECR (mocked)
+        run: |
+          echo "======================================"
+          echo "Pushing image to Amazon ECR..."
+          echo "======================================"
+          echo "Repository: 123456789012.dkr.ecr.us-east-1.amazonaws.com/flash-card-time"
+          echo "Image tag: latest"
+          echo "Image digest: sha256:1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef"
+          echo "======================================"
+          echo "✓ Image pushed to ECR successfully"
+          echo "======================================"
+
+      - name: Deploy to ECS (mocked)
+        run: |
+          echo "======================================"
+          echo "Deploying to Amazon ECS..."
+          echo "======================================"
+          echo "Cluster: flash-card-time-cluster"
+          echo "Service: flash-card-time-service"
+          echo "Task Definition: flash-card-time-task:42"
+          echo "Desired Count: 2"
+          echo "======================================"
+          echo "Updating service..."
+          echo "Waiting for deployment to complete..."
+          echo "Deployment status: PRIMARY (2 running, 0 pending)"
+          echo "======================================"
+          echo "✓ Deployment completed successfully"
+          echo "======================================"
+
+      - name: Deployment Summary
+        run: |
+          echo "======================================"
+          echo "🚀 DEPLOYMENT SUCCESSFUL! 🚀"
+          echo "======================================"
+          echo "Environment: Production"
+          echo "Region: us-east-1"
+          echo "Application URL: https://flash-card-time.example.com"
+          echo "Health Check: Passed ✓"
+          echo "Deployment Time: $(date)"
+          echo "======================================"

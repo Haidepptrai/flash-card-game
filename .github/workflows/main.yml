@@ -1,0 +1,14 @@
+name: Main Pipeline
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  ci:
+    uses: ./.github/workflows/ci-pipeline.yml
+
+  cd:
+    needs: ci
+    uses: ./.github/workflows/cd-pipeline.yml
